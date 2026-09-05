@@ -1,14 +1,12 @@
-// Taxas fixas (em reais)
 const TAXA_COBRANCA = 1;
 const TAXA_SAQUE = 1;
 
-// Taxas percentuais (sobre o valor final cobrado)
 const PCT_EREEMBY = 0.04;
 const PCT_LUCRO = 0.25;
 const PCT_INTERMEDIADORA = 0.02;
 
-const PCT_TOTAL = PCT_EREEMBY + PCT_LUCRO + PCT_INTERMEDIADORA; // 0.31
-const FIXO_TOTAL = TAXA_COBRANCA + TAXA_SAQUE; // 2
+const PCT_TOTAL = PCT_EREEMBY + PCT_LUCRO + PCT_INTERMEDIADORA; 
+const FIXO_TOTAL = TAXA_COBRANCA + TAXA_SAQUE; 
 
 function formatar(v) {
   return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -28,10 +26,6 @@ function calcular() {
   }
   erro.style.display = 'none';
 
-  // As porcentagens incidem sobre o VALOR FINAL (V), não sobre o produto.
-  // V - fixo - (pct_total * V) = valorProduto
-  // V * (1 - pct_total) = valorProduto + fixo
-  // V = (valorProduto + fixo) / (1 - pct_total)
   const valorFinal = (valorProduto + FIXO_TOTAL) / (1 - PCT_TOTAL);
 
   const valorEreemby = valorFinal * PCT_EREEMBY;
