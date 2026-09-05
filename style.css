@@ -1,153 +1,109 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Ocupa a tela inteira sem travar a rolagem se a tela for pequena */
-html, body {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0d0d0d, #1a0000);
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   padding: 20px;
 }
 
-/* Container que garente ocupação visual em tela cheia */
-.app-container {
-  width: 100%;
-  min-height: calc(100vh - 40px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Card centralizado com largura máxima agradável */
-.calculator-box {
-  background: #141414;
-  border: 1px solid #b3141422;
-  border-radius: 16px;
+.card {
+  background: #161616;
+  border: 1px solid #e10600;
+  border-radius: 14px;
   padding: 32px;
   width: 100%;
-  max-width: 480px;
-  box-shadow: 0 10px 40px rgba(179,20,20,0.15);
-  transition: all 0.3s ease;
+  max-width: 420px;
+  box-shadow: 0 0 30px rgba(225,6,0,0.25);
 }
 
-h1.titulo {
-  color: #fff;
-  font-size: 24px;
+h1 {
+  font-size: 1.3rem;
+  text-align: center;
   margin-bottom: 6px;
-  text-align: center;
+  color: #e10600;
 }
 
-.subtitle {
-  color: #999;
-  font-size: 14px;
+p.sub {
   text-align: center;
+  font-size: 0.8rem;
+  color: #999;
   margin-bottom: 24px;
 }
 
-.form-group {
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: #fff;
+  font-size: 1rem;
   margin-bottom: 16px;
 }
 
-label {
-  color: #ddd;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 8px;
-}
+input:focus { outline: none; border-color: #e10600; }
 
-input[type="text"] {
+button {
   width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  background: #1e1e1e;
-  color: #fff;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-input[type="text"]:focus {
-  border-color: #cc1414;
-}
-
-button.calc-btn {
-  width: 100%;
-  padding: 14px;
+  padding: 13px;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #cc1414, #7a0000);
+  border-radius: 8px;
+  background: #e10600;
   color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: 0.2s;
 }
 
-button.calc-btn:hover {
-  opacity: 0.9;
-}
+button:hover { background: #ff2b2b; }
 
 .resultado {
   margin-top: 24px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #0d0d0d;
+  border: 1px solid #333;
   display: none;
 }
 
+.resultado.show { display: block; }
+
 .valor-final {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e10600;
   text-align: center;
-  background: #1e0000;
-  border: 1px solid #cc1414;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.valor-final .label {
-  color: #aaa;
-  font-size: 12px;
-}
-
-.valor-final .valor {
-  color: #fff;
-  font-size: 28px;
-  font-weight: 700;
-  margin-top: 4px;
-}
-
-.detalhes {
-  background: #1a1a1a;
-  border-radius: 10px;
-  padding: 14px 16px;
+  margin-bottom: 14px;
 }
 
 .linha {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
-  color: #bbb;
-  padding: 8px 0;
-  border-bottom: 1px solid #2a2a2a;
+  font-size: 0.85rem;
+  color: #aaa;
+  padding: 4px 0;
+  border-bottom: 1px solid #222;
 }
 
-.linha:last-child {
-  border-bottom: none;
-}
+.linha:last-child { border-bottom: none; font-weight: bold; color: #ddd; }
 
-.linha span:last-child {
-  color: #fff;
-  font-weight: 600;
-}
-
-.linha.lucro span:last-child {
-  color: #4caf50;
+.erro {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 10px;
+  display: none;
 }
