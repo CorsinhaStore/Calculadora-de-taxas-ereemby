@@ -21,6 +21,13 @@ body {
   box-shadow: 0 0 30px rgba(225,6,0,0.25);
 }
 
+.logo {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+}
+
 h1 {
   font-size: 1.3rem;
   text-align: center;
@@ -106,4 +113,21 @@ button:hover { background: #ff2b2b; }
   text-align: center;
   margin-top: 10px;
   display: none;
+}
+
+.rodape {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.rodape a {
+  color: #777;
+  font-size: 0.8rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: 0.2s;
+}
+
+.rodape a:hover {
+  color: #e10600;
 }
