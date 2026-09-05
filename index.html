@@ -1,131 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Calculadora de Taxas</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Taxas - Crown Waves</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <main class="container">
+  <main class="app-container">
+    <div class="calculator-box">
+      <h1 class="titulo">💰 Calculadora de Taxas</h1>
+      <p class="subtitle">Informe o valor do produto e veja quanto cobrar</p>
 
-        <section class="card">
+      <div class="form-group">
+        <label for="valorProduto">Valor do produto (R$)</label>
+        <input type="text" id="valorProduto" placeholder="Ex: 20,00" inputmode="decimal">
+      </div>
 
-            <div class="header">
-                <div class="logo">R$</div>
+      <button class="calc-btn" onclick="calcular()">Calcular</button>
 
-                <h1>Calculadora de Taxas</h1>
+      <div class="resultado" id="resultado">
+        <div class="valor-final">
+          <div class="label">VALOR A COBRAR DO CLIENTE</div>
+          <div class="valor" id="valorCobrar">R$ 0,00</div>
+        </div>
+        <div class="detalhes">
+          <div class="linha"><span>Valor do produto</span><span id="dValorProduto">R$ 0,00</span></div>
+          <div class="linha"><span>Taxa cobrança MysticPay (fixa)</span><span>R$ 1,00</span></div>
+          <div class="linha"><span>Taxa saque MysticPay (fixa)</span><span>R$ 1,00</span></div>
+          <div class="linha"><span>Ereemby (4%)</span><span id="dEreemby">R$ 0,00</span></div>
+          <div class="linha"><span>Intermediadora de pagamentos (2%)</span><span id="dIntermediadora">R$ 0,00</span></div>
+          <div class="linha lucro"><span>Lucro (25%)</span><span id="dLucro">R$ 0,00</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-                <p>
-                    Calcule quanto cobrar pelo seu produto
-                </p>
-            </div>
-
-            <div class="form">
-
-                <label for="produto">
-                    Valor do produto
-                </label>
-
-                <div class="input-box">
-                    <span>R$</span>
-
-                    <input
-                        type="number"
-                        id="produto"
-                        placeholder="0,00"
-                        min="0"
-                        step="0.01"
-                    >
-                </div>
-
-                <button id="btnCalcular">
-                    CALCULAR VALOR
-                </button>
-
-            </div>
-
-            <section class="resultado" id="resultado">
-
-                <div class="resultado-header">
-                    <span>VOCÊ DEVE COBRAR</span>
-
-                    <strong id="valorFinal">
-                        R$ 0,00
-                    </strong>
-                </div>
-
-                <div class="detalhes">
-
-                    <div class="linha">
-                        <span>Valor do produto</span>
-                        <strong id="valorProduto">
-                            R$ 0,00
-                        </strong>
-                    </div>
-
-                    <div class="linha">
-                        <span>Mistic Pay - Cobrança</span>
-                        <strong>
-                            R$ 1,00
-                        </strong>
-                    </div>
-
-                    <div class="linha">
-                        <span>Mistic Pay - Saque</span>
-                        <strong>
-                            R$ 1,00
-                        </strong>
-                    </div>
-
-                    <div class="linha">
-                        <span>Ereeemby (4%)</span>
-                        <strong id="taxaEreeemby">
-                            R$ 0,00
-                        </strong>
-                    </div>
-
-                    <div class="linha">
-                        <span>Lucro (25%)</span>
-                        <strong class="lucro" id="taxaLucro">
-                            R$ 0,00
-                        </strong>
-                    </div>
-
-                    <div class="linha">
-                        <span>Intermediadora (2%)</span>
-                        <strong id="taxaIntermediadora">
-                            R$ 0,00
-                        </strong>
-                    </div>
-
-                </div>
-
-                <div class="total">
-
-                    <span>Total de taxas</span>
-
-                    <strong id="totalTaxas">
-                        R$ 0,00
-                    </strong>
-
-                </div>
-
-            </section>
-
-            <p class="rodape">
-                As taxas percentuais são calculadas sobre o valor do produto.
-            </p>
-
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
