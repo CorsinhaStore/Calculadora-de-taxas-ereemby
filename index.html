@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora de Taxas - Crown Waves</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Taxas</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main class="app-container">
-    <div class="calculator-box">
-      <h1 class="titulo">💰 Calculadora de Taxas</h1>
-      <p class="subtitle">Informe o valor do produto e veja quanto cobrar</p>
+<div class="card">
+  <h1>Calculadora de Taxas</h1>
+  <p class="sub">Descobre quanto cobrar pra sobrar exatamente o valor do produto</p>
 
-      <div class="form-group">
-        <label for="valorProduto">Valor do produto (R$)</label>
-        <input type="text" id="valorProduto" placeholder="Ex: 20,00" inputmode="decimal">
-      </div>
+  <label for="valorProduto">Valor do produto (custo real)</label>
+  <input type="number" id="valorProduto" placeholder="Ex: 10.00" step="0.01" min="0">
 
-      <button class="calc-btn" onclick="calcular()">Calcular</button>
+  <button onclick="calcular()">Calcular</button>
 
-      <div class="resultado" id="resultado">
-        <div class="valor-final">
-          <div class="label">VALOR A COBRAR DO CLIENTE</div>
-          <div class="valor" id="valorCobrar">R$ 0,00</div>
-        </div>
-        <div class="detalhes">
-          <div class="linha"><span>Valor do produto</span><span id="dValorProduto">R$ 0,00</span></div>
-          <div class="linha"><span>Taxa cobrança MysticPay (fixa)</span><span>R$ 1,00</span></div>
-          <div class="linha"><span>Taxa saque MysticPay (fixa)</span><span>R$ 1,00</span></div>
-          <div class="linha"><span>Ereemby (4%)</span><span id="dEreemby">R$ 0,00</span></div>
-          <div class="linha"><span>Intermediadora de pagamentos (2%)</span><span id="dIntermediadora">R$ 0,00</span></div>
-          <div class="linha lucro"><span>Lucro (25%)</span><span id="dLucro">R$ 0,00</span></div>
-        </div>
-      </div>
-    </div>
-  </main>
+  <p class="erro" id="erro">Digita um valor válido maior que zero.</p>
 
-  <script src="script.js"></script>
+  <div class="resultado" id="resultado">
+    <div class="valor-final" id="valorFinal"></div>
+    <div class="linha"><span>Custo do produto</span><span id="lCusto"></span></div>
+    <div class="linha"><span>Cobrança Mystic Pay (R$1)</span><span id="lCobranca"></span></div>
+    <div class="linha"><span>Saque Mystic Pay (R$1)</span><span id="lSaque"></span></div>
+    <div class="linha"><span>Ereemby (4%)</span><span id="lEreemby"></span></div>
+    <div class="linha"><span>Lucro (25%)</span><span id="lLucro"></span></div>
+    <div class="linha"><span>Intermediadora (2%)</span><span id="lInterm"></span></div>
+    <div class="linha"><span>Valor a cobrar</span><span id="lTotal"></span></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
