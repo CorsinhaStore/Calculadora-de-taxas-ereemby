@@ -1,108 +1,44 @@
-const produtoInput = document.getElementById("produto");
-const btnCalcular = document.getElementById("btnCalcular");
-
-const resultado = document.getElementById("resultado");
-
-const valorFinal = document.getElementById("valorFinal");
-const valorProduto = document.getElementById("valorProduto");
-
-const taxaEreeemby = document.getElementById("taxaEreeemby");
-const taxaLucro = document.getElementById("taxaLucro");
-const taxaIntermediadora = document.getElementById("taxaIntermediadora");
-
-const totalTaxas = document.getElementById("totalTaxas");
-
-
-// Formata valores para Real brasileiro
-function moeda(valor) {
-    return valor.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
+function formatarBRL(valor) {
+  return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-
-// Função principal
 function calcular() {
+  const inputEl = document.getElementById('valorProduto');
+  if (!inputEl) return;
 
-    const produto = parseFloat(produtoInput.value);
+  const input = inputEl.value.replace(',', '.');
+  const valorProduto = parseFloat(input);
 
-    // Verifica se o valor é válido
-    if (isNaN(produto) || produto <= 0) {
+  if (isNaN(valorProduto) || valorProduto <= 0) {
+    alert('Digite um valor válido para o produto.');
+    return;
+  }
 
-        alert("Digite um valor válido para o produto.");
+  const taxaFixa = 2;
+  const pctEreemby = 0.04;
+  const pctLucro = 0.25;
+  const pctIntermediadora = 0.02;
+  const pctTotal = pctEreemby + pctLucro + pctIntermediadora;
 
-        produtoInput.focus();
+  const valorCobrar = (valorProduto + taxaFixa) / (1 - pctTotal);
+  const ereemby = valorCobrar * pctEreemby;
+  const lucro = valorCobrar * pctLucro;
+  const intermediadora = valorCobrar * pctIntermediadora;
 
-        return;
-    }
+  document.getElementById('valorCobrar').textContent = formatarBRL(valorCobrar);
+  document.getElementById('dValorProduto').textContent = formatarBRL(valorProduto);
+  document.getElementById('dEreemby').textContent = formatarBRL(ereemby);
+  document.getElementById('dIntermediadora').textContent = formatarBRL(intermediadora);
+  document.getElementById('dLucro').textContent = formatarBRL(lucro);
 
-
-    /*
-        TAXAS
-
-        R$ 1,00 - Cobrança Mistic Pay
-        R$ 1,00 - Saque Mistic Pay
-        4%       - Ereeemby
-        25%      - Lucro
-        2%       - Intermediadora
-    */
-
-
-    // Taxas fixas
-    const cobrancaMistic = 1;
-    const saqueMistic = 1;
-
-
-    // Taxas percentuais
-    const ereemby = produto * 0.04;
-
-    const lucro = produto * 0.25;
-
-    const intermediadora = produto * 0.02;
-
-
-    // Soma das taxas
-    const taxas =
-        cobrancaMistic +
-        saqueMistic +
-        ereemby +
-        lucro +
-        intermediadora;
-
-
-    // Valor final
-    const cobrar = produto + taxas;
-
-
-    // Mostra os valores na tela
-    valorFinal.textContent = moeda(cobrar);
-
-    valorProduto.textContent = moeda(produto);
-
-    taxaEreeemby.textContent = moeda(ereemby);
-
-    taxaLucro.textContent = moeda(lucro);
-
-    taxaIntermediadora.textContent = moeda(intermediadora);
-
-    totalTaxas.textContent = moeda(taxas);
-
-
-    // Mostra o resultado
-    resultado.style.display = "block";
+  document.getElementById('resultado').style.display = 'block';
 }
 
-
-// Clique no botão
-btnCalcular.addEventListener("click", calcular);
-
-
-// Pressionar Enter no campo
-produtoInput.addEventListener("keydown", function(event) {
-
-    if (event.key === "Enter") {
-        calcular();
-    }
-
+document.addEventListener('DOMContentLoaded', function() {
+  const inputEl = document.getElementById('valorProduto');
+  if (inputEl) {
+    inputEl.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') calcular();
+    });
+  }
 });
